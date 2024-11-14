@@ -15,6 +15,12 @@ PROMPT_REGISTRY: Dict[str, Dict[str, str]] = {
         "question-newline-answer": "Question: {{question}}\nAnswer:",
         "q-newline-a": "Q: {{question}}\nA:",
     },
+    "tree-of-thought": {
+        "cot-prompt": "{input}",
+        "propose-prompt": "{input}",
+        "value-prompt": "{input}",
+        "vote-prompt": "{input}"
+    }
 }
 
 

@@ -14,6 +14,7 @@ from . import (
     optimum_lm,
     textsynth,
     vllm_causallms,
+    vllm_causallms_tot,
     vllm_vlms,
 )
 
