@@ -20,7 +20,7 @@ def main():
         system_instruction=None,
         apply_chat_template=False,
         fewshot_as_multiturn=False,
-        gen_kwargs="method_generate=propose,method_evaluate=value,method_select=greedy,steps=3,n_generate_sample=3,n_evaluate_sample=3,n_select_sample=5",
+        gen_kwargs="method_generate=propose,method_evaluate=value,method_select=greedy,depth=3,n_generate_sample=3,n_evaluate_sample=3,n_select_sample=5",
         task_manager=None,
         verbosity="INFO",
         predict_only=False,

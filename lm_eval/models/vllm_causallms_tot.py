@@ -196,7 +196,7 @@ class VLLM_ToT(VLLM):
 
             ys = [""]  # current output candidates
             infos = []
-            for step in range(gen_kwargs["steps"]):
+            for step in range(gen_kwargs["depth"]):
                 # generation
                 if gen_kwargs["method_generate"] == "sample":
                     new_ys = [
