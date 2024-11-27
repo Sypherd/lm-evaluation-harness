@@ -5,7 +5,6 @@ from typing import Dict
 from lm_eval import utils
 from lm_eval.utils import eval_logger
 
-
 # Prompt library.
 # Stores prompts in a dictionary indexed by 2 levels:
 # prompt category name, and prompt name.
@@ -16,11 +15,35 @@ PROMPT_REGISTRY: Dict[str, Dict[str, str]] = {
         "q-newline-a": "Q: {{question}}\nA:",
     },
     "tree-of-thought": {
-        "cot-prompt": "{input}",
-        "propose-prompt": "{input}",
-        "value-prompt": "{input}",
-        "vote-prompt": "{input}"
-    }
+        "mmlu": {
+            # CoT 8-shot for evaluation
+            "cot-prompt": """{input}""",
+            "propose-prompt": """{input}""",
+            "value-prompt": """{input}""",
+            "vote-prompt": """{input}""",
+        },
+        "gpqa": {
+            # CoT 8-shot for evaluation
+            "cot-prompt": """{input}""",
+            "propose-prompt": """{input}""",
+            "value-prompt": """{input}""",
+            "vote-prompt": """{input}""",
+        },
+        "gsm8k": {
+            # CoT 8-shot for evaluation
+            "cot-prompt": """{input}""",
+            "propose-prompt": """We are solving a math problem step-by-step. Here are the previous steps:\n{steps}\nPropose THREE possible continuations of the following problem state, separated by double newlines(\\n\\n):\n{input}""",
+            "value-prompt": """Evaluate if the following {input}""",
+            "vote-prompt": """{input}""",
+        },
+        "bbh": {
+            # CoT 8-shot for evaluation
+            "cot-prompt": """{input}""",
+            "propose-prompt": """{input}""",
+            "value-prompt": """{input}""",
+            "vote-prompt": """{input}""",
+        },
+    },
 }
 
 
