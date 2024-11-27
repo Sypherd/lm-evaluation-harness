@@ -32,8 +32,8 @@ PROMPT_REGISTRY: Dict[str, Dict[str, str]] = {
         "gsm8k": {
             # CoT 8-shot for evaluation
             "cot-prompt": """{input}""",
-            "propose-prompt": """We are solving a math problem step-by-step. Here are the previous steps:\n{steps}\nPropose THREE possible continuations of the following problem state, separated by double newlines(\\n\\n):\n{input}""",
-            "value-prompt": """Evaluate if the following {input}""",
+            "propose-prompt": """{input}""",
+            "value-prompt": """{input}""",
             "vote-prompt": """{input}""",
         },
         "bbh": {
