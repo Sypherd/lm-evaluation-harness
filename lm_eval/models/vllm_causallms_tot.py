@@ -164,7 +164,7 @@ class VLLM_ToT(VLLM):
 
     def generate_until(self, requests: list[Instance], to_print=True) -> List[str]:
         self.task = requests[0].task_name.split("_")[0]
-        yys = []
+        best_proposals = []
         for request in requests:
             context, gen_kwargs = request.args
 
@@ -262,7 +262,7 @@ class VLLM_ToT(VLLM):
                     *sorted(zip(new_ys, values), key=lambda x: x[1], reverse=True)
                 )
                 eval_logger.debug(
-                    f"-- new_ys --: {sorted_new_ys}\n-- sol values --: {sorted_values}\n-- choices --: {select_new_ys}\n"
+                    f"-- new proposals --: {sorted_new_ys}\n-- sol values --: {sorted_values}\n-- choices --: {select_new_ys}\n"
                 )
 
                 infos.append(
@@ -277,9 +277,9 @@ class VLLM_ToT(VLLM):
                 )
                 ys = select_new_ys
 
-            yys.append(ys[0])  # See note
+            best_proposals.append(ys[0])  # See note
             # In https://github.com/princeton-nlp/tree-of-thought-llm/blob/master/src/tot/prompts/game24.py,
             # there's a final value prompt. Interestingly, there is no such valuation
             # for the crosswords game. I think just taking the highest value here makes sense
 
-        return yys
+        return best_proposals
