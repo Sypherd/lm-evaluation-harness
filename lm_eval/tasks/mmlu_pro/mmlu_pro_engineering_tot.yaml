@@ -1,0 +1,20 @@
+description: "The following are multiple choice questions (with answers) about engineering. Think step by step and then finish your answer with \"the answer is (X)\" where X is the correct letter choice.\n"
+include: "_default_template_yaml"
+task: "mmlu_pro_engineering_tot"
+task_alias: "engineering_tot"
+process_docs: !function utils.process_engineering
+generation_kwargs:
+  until:
+    - "</s>"
+    - "Q:"
+    - "<|im_end|>"
+  do_sample: false
+  temperature: 0.0
+  steps: 4
+  n_generate_sample: 1
+  n_evaluate_sample: 1
+  n_select_sample: 2
+  method_generate: "propose"
+  method_evaluate: "value"
+  method_select: "greedy"
+

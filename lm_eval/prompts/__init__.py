@@ -5,7 +5,6 @@ from typing import Dict
 from lm_eval import utils
 from lm_eval.utils import eval_logger
 
-
 # Prompt library.
 # Stores prompts in a dictionary indexed by 2 levels:
 # prompt category name, and prompt name.
@@ -14,6 +13,98 @@ PROMPT_REGISTRY: Dict[str, Dict[str, str]] = {
     "qa-basic": {
         "question-newline-answer": "Question: {{question}}\nAnswer:",
         "q-newline-a": "Q: {{question}}\nA:",
+    },
+    "tree-of-thought": {
+        "mmlu": {
+            # CoT 8-shot for evaluation
+            "cot-prompt": """{input}""",
+            "propose-prompt": """Question: "Which of the following scenarios best exemplifies utilitarian reasoning as applied during the Industrial Revolution?"
+Possible answers:
+A. Enclosure of common lands to increase agricultural productivity despite widespread rural displacement.
+B. Maintaining guild systems to protect artisanal craftsmen at the expense of economic innovation.
+C. Supporting the abolition of child labor regardless of its impact on family incomes.
+D. Advocating for personal freedom over societal welfare in debates on factory safety regulations.
+Proposals:
+- Option A: Assess whether the increased agricultural productivity from enclosures had long-term societal benefits, such as supporting population growth and urbanization.
+- Option B: Investigate whether maintaining guild systems directly conflicts with utilitarian principles by prioritizing the welfare of a small group over the potential economic innovation benefiting a larger population.
+- Option C: Explore whether abolition of child labor had utilitarian support based on potential long-term societal benefits, such as healthier, more educated adults contributing to the economy.
+- Option D: Determine whether prioritizing personal freedom over societal welfare aligns with the utilitarian emphasis on collective well-being.
+
+Question: {question}
+Possible answers: {choices}
+Proposals:""",
+            "value-prompt": """{input}""",
+            "vote-prompt": """{input}""",
+        },
+        "gpqa": {
+            # CoT 8-shot for evaluation
+            "cot-prompt": """{input}""",
+            "propose-prompt": """QUestion: In the context of the double-slit experiment, which phenomenon demonstrates the wave-particle duality of light?
+Possible answers:
+A) The diffraction pattern observed when light passes through a single slit. 
+B) The interference pattern formed when light passes through two slits and is observed on a screen. 
+C) The photoelectric effect, where light causes the emission of electrons from a metal surface. 
+D) The gravitational lensing of light as it passes near a massive object.
+Proposals:
+- The question is about wave-particle duality. What is wave-particle duality? It refers to light behaving both as a wave and as a particle under different circumstances.
+- What happens when light passes through two slits? It creates an interference pattern on a screen, suggesting wave behavior.
+- Is the interference pattern seen in the double-slit experiment a result of light acting like a wave? Yes, it is, since interference is a property of waves.
+- The photoelectric effect (Option C) demonstrates the particle nature of light, but does it relate to the double-slit experiment? No, the photoelectric effect isn’t part of that experiment.
+- If the double-slit experiment shows light can create an interference pattern, does this alone demonstrate wave-particle duality? No, but it shows the wave behavior, and later, when observed as photons, the particle nature is revealed.
+
+Question: {question}
+Possible answers: {choices}
+Proposals:""",
+            "value-prompt": """{input}""",
+            "vote-prompt": """{input}""",
+        },
+        "gsm8k": {
+            # CoT 8-shot for evaluation
+            "cot-prompt": """{input}""",
+            "propose-prompt": """Question: If there are 5 red apples, 3 green apples, and 2 yellow apples in a basket, and you randomly pick 2 apples, what is the probability that both apples are green?
+Possible answers:
+A) 1/3
+B) 1/6
+C) 3/10
+D) 1/15
+Proposals:
+- Total number of apples = 5 red + 3 green + 2 yellow = 10 apples
+- dentify the number of favorable outcomes: the number of ways 2 green apples can be selected from 3 is 3
+- the total number of ways to choose 2 apples from 10 is 45
+- Probability that both apples picked are green 	= \frac{\binom{3}{2}}{\binom{10}{2}}
+
+Question: {question}
+Possible answers: {choices}
+Proposals:""",
+            "value-prompt": """{input}""",
+            "vote-prompt": """{input}""",
+        },
+        "bbh": {
+            # CoT 8-shot for evaluation
+            "cot-prompt": """{input}""",
+            "propose-prompt": """Question: In a race, six runners (X, Y, Z, P, Q, R) finished in the following order: 1st, 2nd, 3rd, 4th, 5th, 6th. Based on the following clues, determine the order in which they finished:
+1. P finished ahead of Y.
+2. Q finished before Z.
+3. R finished immediately before P.
+4. X did not finish last.
+What is the correct order of the finishers?
+Possible answers:
+A) X, P, R, Y, Q, Z 
+B) X, Q, R, P, Y, Z 
+C) X, P, R, Q, Y, Z 
+D) X, R, P, Q, Y, Z
+Proposals:
+- P finished ahead of Y. This means P must be positioned before Y in the final order. *P*Y*
+- Q finished before Z. This means Q must be positioned before Z. *Q*Z*
+- R finished immediately before P. This means R and P must be adjacent, with R finishing just before P. *RP*
+- X did not finish last. This tells us that X cannot be in the 6th position. *X.*
+
+Question: {question}
+Possible answers: {choices}
+Proposals:""",
+            "value-prompt": """{input}""",
+            "vote-prompt": """{input}""",
+        },
     },
 }
 
