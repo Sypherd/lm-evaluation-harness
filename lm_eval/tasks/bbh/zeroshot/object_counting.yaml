@@ -9,7 +9,7 @@ filter_list:
       - function: "take_first"
   - name: "flexible-extract"
     filter:
-      - function: !function utils.NumberParseRegexFilter
+      - function: "number-parse-regex-filter-bbh"
         group_select: 0
         regex_pattern: "([-0-9]+)"
       - function: "take_first"

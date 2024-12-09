@@ -9,7 +9,7 @@ filter_list:
       - function: "take_first"
   - name: "flexible-extract"
     filter:
-      - function: !function utils.MapRegexFilter
+      - function: "map-regex-filter-bbh"
         group_select: 0
         ignore_case: true
         regex_pattern_to_value:

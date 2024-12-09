@@ -20,7 +20,7 @@ generation_kwargs:
     - "Q:"
     - "<|im_end|>"
   do_sample: false
-  temperature: 0.0
+  temperature: 0.5
 num_fewshot: 0
 metadata:
   version: 3.0
