@@ -6,7 +6,7 @@
 filter_list:
   - name: "flexible-extract"
     filter:
-      - function: !function utils.NumberParseRegexFilter
+      - function: "number-parse-regex-filter-bbh"
         group_select: -1
         regex_pattern: "([-0-9]+)"
       - function: "take_first"

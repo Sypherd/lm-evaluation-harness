@@ -6,7 +6,7 @@
 filter_list:
   - name: "flexible-extract"
     filter:
-      - function: !function utils.WordSortFilter
+      - function: "word-sort-filter-bbh"
       - function: "take_first"
   - name: "strict-match"
     filter:
