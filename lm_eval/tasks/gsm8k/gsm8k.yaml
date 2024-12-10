@@ -25,10 +25,10 @@ generation_kwargs:
     - "Question:"
     - "</s>"
     - "<|im_end|>"
-  do_sample: false
+  do_sample: true
   temperature: 0.0
 repeats: 1
-num_fewshot: 5
+num_fewshot: 8
 filter_list:
   - name: "strict-match"
     filter:
