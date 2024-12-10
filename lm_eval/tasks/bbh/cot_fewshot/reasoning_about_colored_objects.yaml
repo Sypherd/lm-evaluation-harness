@@ -140,5 +140,19 @@ fewshot_config:
 
       The number of non-orange items to the left of the teal item is zero. So the
       answer is (A).'
+filter_list:
+  - name: "get-answer"
+    filter:
+      - function: "regex"
+        regex_pattern: "(?<=the answer is )(.*)(?=.)"
+      - function: "take_first"
+  - name: "flexible-extract"
+    filter:
+      - function: "multi-choice-regex-filter-bbh"
+        group_select: -1
+        ignore_case: true
+        ignore_punctuation: true
+        regex_pattern: "(\\([A-Z]\\))"
+      - function: "take_first"
 include: _cot_fewshot_template_yaml
 task: bbh_cot_fewshot_reasoning_about_colored_objects

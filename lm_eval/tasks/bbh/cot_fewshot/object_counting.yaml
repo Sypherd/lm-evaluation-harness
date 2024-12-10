@@ -78,5 +78,17 @@ fewshot_config:
 
       Now, let''s add the numbers in parentheses: 1 + 1 + 1 + 1 + 2 + 1 + 1 = 8. So
       the answer is 8.'
+filter_list:
+  - name: "get-answer"
+    filter:
+      - function: "regex"
+        regex_pattern: "(?<=the answer is )(.*)(?=.)"
+      - function: "take_first"
+  - name: "flexible-extract"
+    filter:
+      - function: "number-parse-regex-filter-bbh"
+        group_select: -1
+        regex_pattern: "([-0-9]+)"
+      - function: "take_first"
 include: _cot_fewshot_template_yaml
 task: bbh_cot_fewshot_object_counting

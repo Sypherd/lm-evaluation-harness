@@ -88,5 +88,17 @@ fewshot_config:
       A typical person might therefore think George did intentionally hit the low
       point region, because he wanted to lift up the spirit of his sister Lena. So
       the answer is Yes.'
+filter_list:
+  - name: "get-answer"
+    filter:
+      - function: "regex"
+        regex_pattern: "(?<=the answer is )(.*)(?=.)"
+      - function: "take_first"
+  - name: "flexible-extract"
+    filter:
+      - function: "regex"
+        group_select: -1
+        regex_pattern: "\\b(Yes|No|yes|no)\\b"
+      - function: "take_first"
 include: _cot_fewshot_template_yaml
 task: bbh_cot_fewshot_causal_judgement

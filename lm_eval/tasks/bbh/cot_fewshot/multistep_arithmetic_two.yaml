@@ -44,5 +44,17 @@ fewshot_config:
       \ -160) = -163.\nLet's calculate B = (9 - 8 * -7 + -9) = (9 - (8 * -7) + -9)\
       \ = (9 - (-56) + -9) = ((9 - (-56)) + -9) = ((65) + -9)= (65 - 9) = 56.\nThen,\
       \ the final equation is A - B = -163 - 56 = -219. So the answer is -219."
+filter_list:
+  - name: "get-answer"
+    filter:
+      - function: "regex"
+        regex_pattern: "(?<=the answer is )(.*)(?=.)"
+      - function: "take_first"
+  - name: "flexible-extract"
+    filter:
+      - function: "number-parse-regex-filter-bbh"
+        group_select: -1
+        regex_pattern: "([-0-9]+)"
+      - function: "take_first"
 include: _cot_fewshot_template_yaml
 task: bbh_cot_fewshot_multistep_arithmetic_two

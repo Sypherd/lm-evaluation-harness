@@ -180,5 +180,19 @@ fewshot_config:
       Note that |A| = |D| and |B| = |C|. Furthermore, A and D are adjacent and B and
       C are adjacent. Thus, this polygon has two pairs of equal-length adjacent sides
       and is "kite". So the answer is (D).'
+filter_list:
+  - name: "get-answer"
+    filter:
+      - function: "regex"
+        regex_pattern: "(?<=the answer is )(.*)(?=.)"
+      - function: "take_first"
+  - name: "flexible-extract"
+    filter:
+      - function: "multi-choice-regex-filter-bbh"
+        group_select: -1
+        ignore_case: true
+        ignore_punctuation: true
+        regex_pattern: "(\\([A-Z]\\))"
+      - function: "take_first"
 include: _cot_fewshot_template_yaml
 task: bbh_cot_fewshot_geometric_shapes
