@@ -21,5 +21,18 @@ fewshot_config:
       says Michaela tells the truth. Osvaldo says Raymond tells the truth. Jamey says
       Osvaldo tells the truth. Does Jamey tell the truth?'
     target: 'No'
+filter_list:
+  - name: "strict-match"
+    filter:
+      - function: "take_first"
+  - name: "flexible-extract"
+    filter:
+      - function: "map-regex-filter-bbh"
+        group_select: 0
+        ignore_case: true
+        regex_pattern_to_value:
+          \b(no|does not tell the truth|is not telling the truth)\b: "no"
+          \b(yes|tells the truth|is telling the truth)\b: "yes"
+      - function: "take_first"
 include: _fewshot_template_yaml
 task: bbh_fewshot_web_of_lies

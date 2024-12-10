@@ -43,5 +43,17 @@ fewshot_config:
       (B) Consistency in the league''s punishments? What do you think this is supposed
       to be, moral?'
     target: (A)
+filter_list:
+  - name: "strict-match"
+    filter:
+      - function: "take_first"
+  - name: "flexible-extract"
+    filter:
+      - function: "multi-choice-regex-filter-bbh"
+        group_select: 0
+        ignore_case: true
+        ignore_punctuation: true
+        regex_pattern: "(\\([A-Z]\\))"
+      - function: "take_first"
 include: _fewshot_template_yaml
 task: bbh_fewshot_snarks

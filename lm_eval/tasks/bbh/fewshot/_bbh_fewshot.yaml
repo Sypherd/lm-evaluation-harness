@@ -31,5 +31,10 @@ aggregate_metric_list:
   - metric: exact_match
     aggregation: mean
     weight_by_size: true
+    filter_list: flexible-extract
+  - metric: exact_match
+    aggregation: mean
+    weight_by_size: true
+    filter_list: strict-match
 metadata:
   version: 3.0
