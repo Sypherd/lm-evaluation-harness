@@ -26,8 +26,8 @@ filter_list:
 generation_kwargs:
   until:
     - "</s>"
-  do_sample: false
   temperature: 0.0
+  do_sample: true
 metric_list:
   - metric: exact_match
     aggregation: mean

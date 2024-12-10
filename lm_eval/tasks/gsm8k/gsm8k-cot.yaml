@@ -56,11 +56,12 @@ filter_list:
   - function: take_first
   name: flexible-extract
 generation_kwargs:
-  do_sample: false
   until:
   - 'Q:'
   - </s>
   - <|im_end|>
+  temperature: 0.0
+  do_sample: true
 tag:
 - chain_of_thought
 metadata:

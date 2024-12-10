@@ -29,6 +29,7 @@ generation_kwargs:
     - "Question:"
     - "<|im_end|>"
   temperature: 0.0
+  do_sample: True
 metric_list:
   - metric: exact_match
     aggregation: mean
