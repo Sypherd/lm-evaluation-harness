@@ -10,6 +10,8 @@ generation_kwargs:
   until:
     - "</s>"
     - "\n"
+  temperature: 0.0
+  do_sample: true
 metric_list:
   - metric: exact_match
     aggregation: mean
