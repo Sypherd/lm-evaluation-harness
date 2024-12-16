@@ -33,7 +33,29 @@ Proposals:
 Question: {question}
 Possible answers: {choices}
 Proposals:""",
-            "value-prompt": """{input}""",
+            "value-prompt": """Evaluate if given scenarios lead to the correct answer to the given question (sure/likely/impossible):
+Question: Which of the following scenarios best exemplifies utilitarian reasoning as applied during the Industrial Revolution?
+Possible answers:
+A. Enclosure of common lands to increase agricultural productivity despite widespread rural displacement.
+B. Maintaining guild systems to protect artisanal craftsmen at the expense of economic innovation.
+C. Supporting the abolition of child labor regardless of its impact on family incomes.
+D. Advocating for personal freedom over societal welfare in debates on factory safety regulations.
+Scenario:
+- Enclosure of common lands to increase agricultural productivity despite widespread rural displacement. Increasing agricultural productivity benefits the majority by ensuring more food availability and economic efficiency. Although it causes harm to displaced rural populations, the net benefit to society aligns with utilitarian principles of maximizing overall welfare. 
+sure 
+Scenario:
+- Maintaining guild systems to protect artisanal craftsmen at the expense of economic innovation. Maintaining guild systems benefits a small group (artisanal craftsmen) but hinders broader societal progress by suppressing economic innovation and industrial growth. Utilitarianism prioritizes the greatest good for the greatest number, making this approach contrary to its principles. 
+impossible 
+Scenario:
+- Supporting the abolition of child labor regardless of its impact on family incomes. Abolishing child labor is ethically desirable and improves long-term societal welfare by protecting children, but utilitarianism would require assessing whether the immediate economic harm to families outweighs these benefits. Since the balance of impacts is not definitive, it could be considered utilitarian under certain circumstances but not all. 
+likely
+Scenario:
+- Advocating for personal freedom over societal welfare in debates on factory safety regulations. Prioritizing personal freedom over societal welfare disregards the utilitarian focus on maximizing overall happiness and safety for the majority. Factory safety regulations aim to improve conditions for a larger group, while personal freedom here serves individual interests. 
+impossible
+
+{input}
+Scenario: 
+{scenario}""",
             "vote-prompt": """{input}""",
         },
         "gpqa": {
@@ -55,7 +77,22 @@ Proposals:
 Question: {question}
 Possible answers: {choices}
 Proposals:""",
-            "value-prompt": """{input}""",
+            "value-prompt": """Evaluate if given scenarios lead to the correct answer to the given question (sure/likely/impossible):
+Question: In the context of the double-slit experiment, which phenomenon demonstrates the wave-particle duality of light?
+Possible answers:
+A) The diffraction pattern observed when light passes through a single slit. B) The interference pattern formed when light passes through two slits and is observed on a screen. C) The photoelectric effect, where light causes the emission of electrons from a metal surface. D) The gravitational lensing of light as it passes near a massive object.
+Scenario:
+The diffraction pattern observed when light passes through a single slit.A diffraction pattern occurs due to the wave nature of light, but it does not explicitly demonstrate particle-like behavior. impossible
+Scenario:
+The interference pattern formed when light passes through two slits and is observed on a screen. The interference pattern results from the wave nature of light, and experiments show that even individual photons contribute to the pattern over time, demonstrating both wave and particle characteristics. sure
+Scenario:
+The photoelectric effect, where light causes the emission of electrons from a metal surface. The photoelectric effect demonstrates the particle nature of light (photons) but does not involve interference or diffraction patterns that indicate wave behavior. impossible
+Scenario:
+The gravitational lensing of light as it passes near a massive object. Gravitational lensing demonstrates the curvature of spacetime affecting light's path, but it does not relate to wave-particle duality. impossible
+
+{input}
+Scenario: 
+{scenario}""",
             "vote-prompt": """{input}""",
         },
         "gsm8k": {
@@ -76,7 +113,25 @@ Proposals:
 Question: {question}
 Possible answers: {choices}
 Proposals:""",
-            "value-prompt": """{input}""",
+            "value-prompt": """Evaluate if given scenarios lead to the correct answer to the given question (sure/likely/impossible):
+Question: If there are 5 red apples, 3 green apples, and 2 yellow apples in a basket, and you randomly pick 2 apples, what is the probability that both apples are green?
+Possible answers:
+* A) 1/3
+* B) 1/6
+* C) 3/10
+* D) 1/15
+Scenario:
+Total apples = 5 + 3 + 2 = 10  Probability of first green apple = 3/10  Probability of second green apple (after one green apple is picked) = 2/9  Total probability = (3/10) * (2/9) = 6/90 = 1/15  sure
+Scenario:
+If probability = 1/3, then 1/3 = (number of favorable outcomes) / (total possible outcomes)  Total outcomes for picking 2 apples = 10C2 = 45  Favorable outcomes for picking 2 green apples = 3C2 = 3 Probability = 3/45 = 1/15 ≠ 1/3  impossible 
+Scenario:
+If probability = 1/6, then 1/6 = (number of favorable outcomes) / (total possible outcomes)  Total outcomes for picking 2 apples = 10C2 = 45  Favorable outcomes for picking 2 green apples = 3C2 = 3 Probability = 3/45 = 1/15 ≠ 1/6  impossible 
+Scenario:
+If probability = 3/10, then 3/10 = (number of favorable outcomes) / (total possible outcomes)  Total outcomes for picking 2 apples = 10C2 = 45  Favorable outcomes for picking 2 green apples = 3C2 = 3  Probability = 3/45 = 1/15 ≠ 3/10  impossible
+
+{input}
+Scenario: 
+{scenario}""",
             "vote-prompt": """{input}""",
         },
         "bbh": {
@@ -102,7 +157,44 @@ Proposals:
 Question: {question}
 Possible answers: {choices}
 Proposals:""",
-            "value-prompt": """{input}""",
+            "value-prompt": """Evaluate if given scenarios lead to the correct answer to the given question (sure/likely/impossible):
+Question: In a race, six runners (X, Y, Z, P, Q, R) finished in the following order: 1st, 2nd, 3rd, 4th, 5th, 6th. Based on the following clues, determine the order in which they finished:
+1. P finished ahead of Y.
+2. Q finished before Z.
+3. R finished immediately before P.
+4. X did not finish last.
+What is the correct order of the finishers?
+Possible answers:
+A) X, P, R, Y, Q, Z B) X, Q, R, P, Y, Z C) X, P, R, Q, Y, Z D) X, R, P, Q, Y, Z
+Scenario:
+X, P, R, Y, Q, Z
+1. P finished ahead of Y - true
+2. Q finished before Z - true
+3. R finished immediately before P - false (R is not immediately before P)
+4. X did not finish last - true impossible
+Scenario:
+X, Q, R, P, Y, Z
+1. P finished ahead of Y - true
+2. Q finished before Z - true
+3. R finished immediately before P - true
+4. X did not finish last - true sure
+Scenario:
+X, P, R, Q, Y, Z
+1. P finished ahead of Y - true
+2. Q finished before Z - true
+3. R finished immediately before P - false (R is not immediately before P)
+4. X did not finish last - true impossible
+Scenario:
+X, R, P, Q, Y, Z
+1. P finished ahead of Y - true
+2. Q finished before Z - true
+3. R finished immediately before P - true
+4. X did not finish last - true sure
+
+
+{input}
+Scenario: 
+{scenario}""",
             "vote-prompt": """{input}""",
         },
     },
