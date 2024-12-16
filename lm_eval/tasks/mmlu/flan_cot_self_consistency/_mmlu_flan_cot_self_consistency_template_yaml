@@ -1,0 +1,41 @@
+dataset_path: hails/mmlu_no_train # a copy of `cais/mmlu` with no auxiliary_train split
+validation_split: validation
+test_split: test
+fewshot_config:
+  sampler: first_n
+output_type: generate_until
+doc_to_text: "{% if choices is defined%}Q: {{question.strip()}}\n(A) {{choices[0]}} (B) {{choices[1]}} (C) {{choices[2]}} (D) {{choices[3]}}\nA: Let's think step by step.{% else %}Q: {{ question.strip() }}\nA:{% endif %}"
+doc_to_target: "{{['(A)', '(B)', '(C)', '(D)'][answer] if answer is defined else target}}"
+repeats: 2
+filter_list:
+  - name: "get-answer-self-consistency"
+    filter:
+      - function: "regex"
+        regex_pattern: "(?<=answer is )(.*)(?=.)"
+      - function: "majority_vote"
+      - function: "take_first"
+  - name: "multi-choice-self-consistency"
+    filter:
+      - function: "multi_choice_regex"
+        group_select: -1
+        ignore_case: true
+        ignore_punctuation: true
+        regex_pattern: "(\\([A-Z]\\))"
+      - function: "majority_vote"
+      - function: "take_first"
+generation_kwargs:
+  until:
+    - "</s>"
+  do_sample: true
+  temperature: 0.0
+num_fewshot: 4
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+    ignore_case: true
+    ignore_punctuation: true
+metadata:
+  version: 2.0
+dataset_kwargs:
+  trust_remote_code: true
