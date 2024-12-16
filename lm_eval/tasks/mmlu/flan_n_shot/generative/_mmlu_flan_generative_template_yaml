@@ -13,7 +13,7 @@ filter_list:
   - name: "flexible-extract"
     filter:
       - function: "multi_choice_regex"
-        group_select: 0
+        group_select: -1
         regex_pattern: "(\\([A-Z]\\))"
         ignore_case: true
         ignore_punctuation: true
