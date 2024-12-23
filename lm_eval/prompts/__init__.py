@@ -56,7 +56,10 @@ impossible
 {input}
 Scenario: 
 {scenario}""",
-            "vote-prompt": """{input}""",
+            "vote-prompt": """Given a question and several choices, evaluate each option in detail to determine which one is most likely to lead to the correct answer. 
+Analyze the strengths and weaknesses of each choice, considering factors such as relevance, accuracy, and logical consistency. Conclude in the last line "The best choice is {s}", where s the integer id of the choice.
+{input}:
+{choices}:""",
         },
         "gpqa": {
             # CoT 8-shot for evaluation
@@ -93,7 +96,10 @@ The gravitational lensing of light as it passes near a massive object. Gravita
 {input}
 Scenario: 
 {scenario}""",
-            "vote-prompt": """{input}""",
+            "vote-prompt": """Given a question and several choices, evaluate each option in detail to determine which one is most likely to lead to the correct answer. 
+Analyze the strengths and weaknesses of each choice, considering factors such as relevance, accuracy, and logical consistency. Conclude in the last line "The best choice is {s}", where s the integer id of the choice.
+{input}:
+{choices}:""",
         },
         "gsm8k": {
             # CoT 8-shot for evaluation
@@ -132,7 +138,10 @@ If probability = 3/10, then 3/10 = (number of favorable outcomes) / (total possi
 {input}
 Scenario: 
 {scenario}""",
-            "vote-prompt": """{input}""",
+            "vote-prompt": """Given a question and several choices, evaluate each option in detail to determine which one is most likely to lead to the correct answer. 
+Analyze the strengths and weaknesses of each choice, considering factors such as relevance, accuracy, and logical consistency. Conclude in the last line "The best choice is {s}", where s the integer id of the choice.
+{input}:
+{choices}:""",
         },
         "bbh": {
             # CoT 8-shot for evaluation
@@ -195,7 +204,10 @@ X, R, P, Q, Y, Z
 {input}
 Scenario: 
 {scenario}""",
-            "vote-prompt": """{input}""",
+            "vote-prompt": """Given a question and several choices, evaluate each option in detail to determine which one is most likely to lead to the correct answer. 
+Analyze the strengths and weaknesses of each choice, considering factors such as relevance, accuracy, and logical consistency. Conclude in the last line "The best choice is {s}", where s the integer id of the choice.
+{input}:
+{choices}:""",
         },
     },
 }
