@@ -46,13 +46,13 @@ fewshot_config:
 filter_list:
 - filter:
   - function: regex
-    regex_pattern: The answer is (\-?[0-9\.\,]+).
+    regex_pattern: "[Tt]he answer is[^\\d-]*(-?[\\d\\.,]*\\d+)"
   - function: take_first
   name: strict-match
 - filter:
   - function: regex
     group_select: -1
-    regex_pattern: (-?[$0-9.,]{2,})|(-?[0-9]+)
+    regex_pattern: "(-?[$0-9.,]{2,})|(-?[0-9]+)"
   - function: take_first
   name: flexible-extract
 generation_kwargs:
