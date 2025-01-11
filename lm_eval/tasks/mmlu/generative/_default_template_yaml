@@ -9,7 +9,8 @@ doc_to_target: "{{['A', 'B', 'C', 'D'][answer]}}"
 generation_kwargs:
   until:
     - "</s>"
-    - "\n"
+    - "Q:"
+    - "<|im_end|>"
   temperature: 0.0
   do_sample: true
 metric_list:

@@ -1,6 +1,5 @@
 dataset_path: hails/mmlu_no_train # a copy of `cais/mmlu` with no auxiliary_train split
-validation_split: validation
-test_split: test
+test_split: validation
 fewshot_config:
   sampler: first_n
 output_type: generate_until

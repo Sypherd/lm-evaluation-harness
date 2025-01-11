@@ -1,5 +1,5 @@
 dataset_path: hails/mmlu_no_train # a copy of `cais/mmlu` with no auxiliary_train split
-test_split: test
+test_split: validation
 fewshot_split: dev
 fewshot_config:
   sampler: first_n
@@ -23,7 +23,6 @@ generation_kwargs:
     - "</s>"
     - "Q:"
     - "<|im_end|>"
-    - "\n"
   temperature: 0.0
   do_sample: true
 metric_list:
