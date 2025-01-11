@@ -26,6 +26,8 @@ filter_list:
 generation_kwargs:
   until:
     - "</s>"
+    - "Question:"
+    - "<|im_end|>"
   temperature: 0.0
   do_sample: true
 metric_list:

@@ -15,7 +15,6 @@ generation_kwargs:
     - "<|im_end|>"
   temperature: 0.5
   do_sample: true
-repeats: 3
-num_fewshot: 3
+repeats: 10
 metadata:
   version: 3.0
