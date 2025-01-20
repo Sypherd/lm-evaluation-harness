@@ -3,7 +3,7 @@ test_split: validation
 fewshot_config:
   sampler: first_n
 output_type: generate_until
-doc_to_text: "{% if choices is defined%}Q: {{question.strip()}}\n(A) {{choices[0]}} (B) {{choices[1]}} (C) {{choices[2]}} (D) {{choices[3]}}\nA: Let's think step by step.{% else %}Q: {{ question.strip() }}\nA:{% endif %}"
+doc_to_text: "{% if choices is defined%}Question: {{question.strip()}}\n(A) {{choices[0]}}; (B) {{choices[1]}}; (C) {{choices[2]}}; (D) {{choices[3]}}\nAnswer: Let's think step by step.{% else %}Question: {{ question.strip() }}\nAnswer:{% endif %}"
 doc_to_target: "{{['(A)', '(B)', '(C)', '(D)'][answer] if answer is defined else target}}"
 repeats: 10
 filter_list:
