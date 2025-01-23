@@ -26,6 +26,7 @@ generation_kwargs:
   until:
     - "</s>"
     - "Q:"
+    - "Question:"
     - "<|im_end|>"
   do_sample: true
   temperature: 0.5
