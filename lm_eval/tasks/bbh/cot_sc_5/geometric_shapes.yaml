@@ -196,5 +196,5 @@ filter_list:
         regex_pattern: "(\\([A-Z]\\))"
       - function: "majority_vote"
       - function: "take_first"
-include: _cot_self_consistency_template_yaml
-task: bbh_cot_self_consistency_geometric_shapes
+include: _cot_sc_5_template_yaml
+task: bbh_cot_sc_5_geometric_shapes

@@ -1,4 +1,4 @@
-group: bbh
+group: bbh_cot_sc_5
 task:
   - bbh_cot_sc_5_boolean_expressions
   - bbh_cot_sc_5_causal_judgement

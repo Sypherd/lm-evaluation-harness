@@ -92,5 +92,5 @@ filter_list:
           \b(yes|tells the truth|is telling the truth)\b: "yes"
       - function: "majority_vote"
       - function: "take_first"
-include: _cot_self_consistency_template_yaml
-task: bbh_cot_self_consistency_web_of_lies
+include: _cot_sc_5_template_yaml
+task: bbh_cot_sc_5_web_of_lies

@@ -63,5 +63,5 @@ filter_list:
       - function: "word-sort-filter-bbh"
       - function: "majority_vote"
       - function: "take_first"
-include: _cot_self_consistency_template_yaml
-task: bbh_cot_self_consistency_word_sorting
+include: _cot_sc_5_template_yaml
+task: bbh_cot_sc_5_word_sorting
