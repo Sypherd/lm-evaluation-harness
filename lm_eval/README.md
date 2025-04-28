@@ -43,6 +43,8 @@ huggingface-cli login
 
 ## Execution
 
+Within the `lm_eval` directory, there are a number of `<model-benchmark-strategy>.py` files. These contain, along with the task files, define the exact configurations and hyperparameters for reproducing our results. Note that we use LM Evaluation Harness in this way (as opposed to the CLI) to (1) have access to more variables, (2) allow users to reproduce individual experiments, and (3) allow each experiment to be examined in isolation.
+
 The following instructions should be performed in the `lm_eval` directory to reproduce our results:
 
 * Run the Python file: `python <experiment-name>.py`
