@@ -1,6 +1,6 @@
 # Overview
 
-This repository stores the code used for the experiments in the "Incorporating Token Usage into Prompting Strategy Evaluation" paper. Unfortunately, the official [LM Evaluation Harness repository](https://github.com/EleutherAI/lm-evaluation-harness) had some breaking bugs that we had to fix prior to running our experiments. We were unable to merge all of those fixes prior to submission and thus we provide this fork for reproducing our results.
+This repository stores the code used for the experiments in the "Incorporating Token Usage into Prompting Strategy Evaluation" paper. Unfortunately, the official [LM Evaluation Harness repository](https://github.com/EleutherAI/lm-evaluation-harness) had some breaking bugs that we had to fix prior to running our experiments. We were unable to merge all of those fixes prior to submission and thus provide this fork for reproducing our results.
 
 # Reproducing the Results
 
