@@ -58,10 +58,10 @@ The results will be stored in the newly created `results` directory in `lm_eval`
 
 ## Retrieving the Data
 
-The results of our experiments are available in the `results.tar.gz` file available at this link <link redacted; sample included in supplementary materials>. This file contains the results of all experiments, including the ablation studies and general results.
+The results of our experiments are available in the `results.tar.gz` file available at [this link](https://drive.google.com/file/d/1RsrzYUlrSuYzj43LRk33X2-Nru-7nG6y/view?usp=sharing). This file contains the results of all experiments, including the ablation studies and general results.
 Once downloaded, it can be decompressed with:
 ```bash
-tar -xvzf path/to/results.tar.gz
+tar -xvzf path/to/paper-results.tar.gz
 ```
 
 ## Structure
