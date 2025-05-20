@@ -93,5 +93,17 @@ fewshot_config:
       \ case X = rare-consumer(Nioxin) does not appear in (2).\nThe case X = loyal-buyer(Caress)\
       \ does not appear in (2), either.\nSo, from (1) and (2), we cannot necessarily\
       \ deduce the Hypothesis. So the answer is invalid."
+filter_list:
+  - name: "get-answer"
+    filter:
+      - function: "regex"
+        regex_pattern: "(?<=the answer is )(.*)(?=.)"
+      - function: "take_first"
+  - name: "flexible-extract"
+    filter:
+      - function: "regex"
+        group_select: -1
+        regex_pattern: "\\b(valid|invalid)\\b"
+      - function: "take_first"
 include: _cot_fewshot_template_yaml
 task: bbh_cot_fewshot_formal_fallacies

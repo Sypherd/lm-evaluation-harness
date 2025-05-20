@@ -25,14 +25,15 @@ generation_kwargs:
     - "Q:"
     - "</s>"
     - "<|im_end|>"
-  do_sample: false
+  do_sample: true
+  temperature: 0.0
 repeats: 1
 num_fewshot: 0
 filter_list:
   - name: "strict-match"
     filter:
       - function: "regex"
-        regex_pattern: "The answer is (\\-?[0-9\\.\\,]+)."
+        regex_pattern: "[Tt]he answer is[^\\d-]*(-?[\\d\\.,]*\\d+)"
       - function: "take_first"
   - name: "flexible-extract"
     filter:

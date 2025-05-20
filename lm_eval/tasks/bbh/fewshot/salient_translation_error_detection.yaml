@@ -73,5 +73,17 @@ fewshot_config:
       Options:\n(A) Modifiers or Adjectives\n(B) Numerical Values\n(C) Negation or\
       \ Antonyms\n(D) Named Entities\n(E) Dropped Content\n(F) Facts"
     target: (C)
+filter_list:
+  - name: "strict-match"
+    filter:
+      - function: "take_first"
+  - name: "flexible-extract"
+    filter:
+      - function: "multi-choice-regex-filter-bbh"
+        group_select: 0
+        ignore_case: true
+        ignore_punctuation: true
+        regex_pattern: "(\\([A-Z]\\))"
+      - function: "take_first"
 include: _fewshot_template_yaml
 task: bbh_fewshot_salient_translation_error_detection

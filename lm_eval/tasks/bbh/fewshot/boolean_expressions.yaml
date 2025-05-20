@@ -15,5 +15,15 @@ fewshot_config:
     target: 'False'
   - input: not not ( not ( False ) ) is
     target: 'True'
+filter_list:
+  - name: "strict-match"
+    filter:
+      - function: "take_first"
+  - name: "flexible-extract"
+    filter:
+      - function: "regex"
+        group_select: 0
+        regex_pattern: "\\b(True|False)\\b"
+      - function: "take_first"
 include: _fewshot_template_yaml
 task: bbh_fewshot_boolean_expressions

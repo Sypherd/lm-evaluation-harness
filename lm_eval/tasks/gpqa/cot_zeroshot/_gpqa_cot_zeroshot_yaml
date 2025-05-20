@@ -25,7 +25,7 @@ filter_list:
 generation_kwargs:
   until:
     - "</s>"
-  do_sample: false
+  do_sample: true
   temperature: 0.0
 num_fewshot: 0
 metric_list:

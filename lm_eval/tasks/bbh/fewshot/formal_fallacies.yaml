@@ -56,5 +56,15 @@ fewshot_config:
 
       - invalid'
     target: invalid
+filter_list:
+  - name: "strict-match"
+    filter:
+      - function: "take_first"
+  - name: "flexible-extract"
+    filter:
+      - function: "regex"
+        group_select: 0
+        regex_pattern: "\\b(valid|invalid)\\b"
+      - function: "take_first"
 include: _fewshot_template_yaml
 task: bbh_fewshot_formal_fallacies

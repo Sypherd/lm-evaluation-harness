@@ -18,5 +18,18 @@ fewshot_config:
   - input: Is the following sentence plausible? "DeMar DeRozan was called for the
       goal tend."
     target: 'yes'
+filter_list:
+  - name: "strict-match"
+    filter:
+      - function: "take_first"
+  - name: "flexible-extract"
+    filter:
+      - function: "map-regex-filter-bbh"
+        group_select: 0
+        ignore_case: true
+        regex_pattern_to_value:
+          \b(no|not plausible)\b: "no"
+          \b(yes|plausible)\b: "yes"
+      - function: "take_first"
 include: _fewshot_template_yaml
 task: bbh_fewshot_sports_understanding

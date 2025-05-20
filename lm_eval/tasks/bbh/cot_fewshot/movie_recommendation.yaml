@@ -93,5 +93,19 @@ fewshot_config:
       options, the only movie similar to these ones seems to be Edge of Tomorrow (action,
       adventure, crime, mystery; 2014), as it is also a science-fiction movie and
       features Tom Cruise. So the answer is (D).'
+filter_list:
+  - name: "get-answer"
+    filter:
+      - function: "regex"
+        regex_pattern: "(?<=the answer is )(.*)(?=.)"
+      - function: "take_first"
+  - name: "flexible-extract"
+    filter:
+      - function: "multi-choice-regex-filter-bbh"
+        group_select: -1
+        ignore_case: true
+        ignore_punctuation: true
+        regex_pattern: "(\\([A-Z]\\))"
+      - function: "take_first"
 include: _cot_fewshot_template_yaml
 task: bbh_cot_fewshot_movie_recommendation

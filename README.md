@@ -1,3 +1,7 @@
+# Replicating Results for "Incorporating Token Usage into Prompting Strategy Evaluation"
+
+> 🛑 **For instructions on how to replicate the results of the "Incorporating Token Usage into Prompting Strategy Evaluation" paper, please follow [the instructions found at this link](./lm_eval/README.md).**
+
 # Language Model Evaluation Harness
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10256836.svg)](https://doi.org/10.5281/zenodo.10256836)

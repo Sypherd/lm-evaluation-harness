@@ -24,5 +24,20 @@ fewshot_config:
       goal tend."
     target: Let's think step by step. DeMar DeRozan is an American basketball player.
       Goal tending is part of basketball. So the answer is yes.
+filter_list:
+  - name: "get-answer"
+    filter:
+      - function: "regex"
+        regex_pattern: "(?<=the answer is )(.*)(?=.)"
+      - function: "take_first"
+  - name: "flexible-extract"
+    filter:
+      - function: "map-regex-filter-bbh"
+        group_select: -1
+        ignore_case: true
+        regex_pattern_to_value:
+          \b(no|not plausible)\b: "no"
+          \b(yes|plausible)\b: "yes"
+      - function: "take_first"
 include: _cot_fewshot_template_yaml
 task: bbh_cot_fewshot_sports_understanding

@@ -80,5 +80,19 @@ fewshot_config:
       adjective order: [1. opinion] [4. shape] [5. color] [7. material] (or, in numeric
       terms, 1 4 5 7 ). Because 1 < 4 < 5 < 7 is correct, (B) has the correct ordering.
       So the answer is (B).'
+filter_list:
+  - name: "get-answer"
+    filter:
+      - function: "regex"
+        regex_pattern: "(?<=the answer is )(.*)(?=.)"
+      - function: "take_first"
+  - name: "flexible-extract"
+    filter:
+      - function: "multi-choice-regex-filter-bbh"
+        group_select: -1
+        ignore_case: true
+        ignore_punctuation: true
+        regex_pattern: "(\\([A-Z]\\))"
+      - function: "take_first"
 include: _cot_fewshot_template_yaml
 task: bbh_cot_fewshot_hyperbaton

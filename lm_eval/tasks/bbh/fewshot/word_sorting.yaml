@@ -17,5 +17,13 @@ fewshot_config:
   - input: 'Sort the following words alphabetically: List: newt arson parthia seismography
       mugho aspect census'
     target: arson aspect census mugho newt parthia seismography
+filter_list:
+  - name: "strict-match"
+    filter:
+      - function: "take_first"
+  - name: "flexible-extract"
+    filter:
+      - function: "word-sort-filter-bbh"
+      - function: "take_first"
 include: _fewshot_template_yaml
 task: bbh_fewshot_word_sorting

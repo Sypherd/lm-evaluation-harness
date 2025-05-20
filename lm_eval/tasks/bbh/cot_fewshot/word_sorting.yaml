@@ -51,5 +51,15 @@ fewshot_config:
       "arson" < (19) "aspect". Hence, we have ["arson" < "aspect"] < "census" < "mugho"
       < "newt" < "parthia" < "seismography". So the answer is arson aspect census
       mugho newt parthia seismography.'
+filter_list:
+  - name: "get-answer"
+    filter:
+      - function: "regex"
+        regex_pattern: "(?<=the answer is )(.*)(?=.)"
+      - function: "take_first"
+  - name: "flexible-extract"
+    filter:
+      - function: "word-sort-filter-bbh"
+      - function: "take_first"
 include: _cot_fewshot_template_yaml
 task: bbh_cot_fewshot_word_sorting

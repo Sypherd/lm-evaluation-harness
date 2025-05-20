@@ -32,5 +32,9 @@ aggregate_metric_list:
     aggregation: mean
     weight_by_size: true
     filter_list: get-answer
+  - metric: exact_match
+    aggregation: mean
+    weight_by_size: true
+    filter_list: flexible-extract
 metadata:
   version: 3.0
